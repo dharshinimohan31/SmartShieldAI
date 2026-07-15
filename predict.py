@@ -48,12 +48,13 @@ def _lazy_load():
         logger.info("Keras tokenizer loaded.")
 
     if _LSTM_MODEL is None:
-        # Imported lazily so importing predict.py doesn't force a TF import
-        # for code paths (like simple keyword tests) that don't need it.
+    try:
         from tensorflow.keras.models import load_model
         _LSTM_MODEL = load_model(config.LSTM_MODEL_PATH)
         logger.info("LSTM model loaded.")
-
+    except Exception as e:
+        logger.warning(f"LSTM model could not be loaded: {e}")
+        _LSTM_MODEL = None
 
 def preload_models():
     """
@@ -87,13 +88,26 @@ def predict_logistic(text: str) -> float:
 
 def predict_lstm(text: str) -> float:
     """Return P(spam) from the LSTM model."""
+
     _lazy_load()
+
+    if _LSTM_MODEL is None:
+        logger.warning("Using Logistic Regression score as fallback.")
+        return predict_logistic(text)
+
     from tensorflow.keras.preprocessing.sequence import pad_sequences
 
     cleaned = preprocess_for_dl(text)
     seq = _TOKENIZER.texts_to_sequences([cleaned])
-    padded = pad_sequences(seq, maxlen=config.MAX_SEQUENCE_LENGTH, padding="post", truncating="post")
+    padded = pad_sequences(
+        seq,
+        maxlen=config.MAX_SEQUENCE_LENGTH,
+        padding="post",
+        truncating="post",
+    )
+
     proba = _LSTM_MODEL.predict(padded, verbose=0)[0][0]
+
     return float(proba)
 
 
