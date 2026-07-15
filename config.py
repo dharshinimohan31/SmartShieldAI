@@ -75,11 +75,11 @@ APP_NAME = "SmartShield AI"
 APP_TAGLINE = "Hybrid Explainable Spam & Phishing Detection System"
 APP_VERSION = "1.0.0"
 
-DEVELOPER_NAME = "Your Name Here"
-DEVELOPER_ROLE = "Final Year B.Tech Student (AI/ML)"
-DEVELOPER_COLLEGE = "Your College / University Name"
-DEVELOPER_GITHUB = "https://github.com/your-username"
-DEVELOPER_LINKEDIN = "https://linkedin.com/in/your-profile"
+DEVELOPER_NAME = "DharshiniMohan"
+DEVELOPER_ROLE = "Pre Final year B.Tech Student (AI&DS)"
+DEVELOPER_COLLEGE = "SRM MADURAI COLLEGE FOR ENGINEERING AND TECHNOLOGY"
+DEVELOPER_GITHUB = "https://github.com/dharshinimohan31"
+DEVELOPER_LINKEDIN = "https://linkedin.com/in/dharshini-mohan-3o"
 
 # ---------------------------------------------------------------------------
 # LOGGING
