@@ -1,0 +1,30 @@
+# ============================================================
+# SmartShield AI — Python Dependencies
+# Tested with Python 3.10 - 3.12
+# ============================================================
+
+# Web Application
+streamlit>=1.38.0
+
+# Data Handling
+pandas>=2.0.0
+numpy>=1.26.0
+
+# Machine Learning
+scikit-learn>=1.4.0
+
+# Deep Learning
+tensorflow-cpu>=2.16.0
+
+# NLP
+nltk>=3.8.0
+# spacy>=3.7.0          # OPTIONAL — enables full Named Entity Recognition.
+                         # Uncomment + run: python -m spacy download en_core_web_sm
+                         # The app works without it (regex-based NER fallback).
+
+# Visualization
+plotly>=5.20.0
+wordcloud>=1.9.0
+
+# Utilities
+imbalanced-learn>=0.12.0
